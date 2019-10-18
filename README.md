@@ -1,19 +1,21 @@
 # Sample API with Authentication
-Sample NodeJS App with Authentication via JWT
+Sample NodeJS App with Authentication via JWT.
 
 # Getting Started
 ## Prerequisites
 * [NodeJS](https://nodejs.org/en/docs/guides/getting-started-guide/)
 * [MongoDB](https://docs.mongodb.com/manual/tutorial/getting-started/)
-    * You can also sign up for free account at [MongoDB Atlas](https://docs.atlas.mongodb.com/getting-started/) if you don't want to set up your own MongoDB
+    * You can also sign up for free account at [MongoDB Atlas](https://docs.atlas.mongodb.com/getting-started/) if you don't want to set up your own MongoDB.
 ## Packages
-Run `npm install` at the root project directory (same directory level as `package.json`) to install required node packages
+Run `npm install` at the root project directory (same directory level as `package.json`) to install required node packages.
 ## Configurations
 * Under sample `.env` file, change the configurations as per individual requirements:
     * `APP_PORT` - port at which the server will run
     * `MONGO_URI` - uri connection string for your mongodb
     * `TOKEN_SECRET` - some secret key of yours, you can also generate it (at every expiry interval) via a random hash function in the app itself to be more secure
     * `N_SALT_ROUNDS` - number of rounds for generating salt (more rounds = more secure, but more compute time)
+## Running the service
+To start the service during development, run `npm start` at the root project directory. This will start `nodemon index.js`. To modify the behaviour of `npm start`, edit `package.json` under `scripts -> start`.
 ## API Endpoints
 * `/api/user/register`
     * register a new user/email/password into the mongodb database
@@ -37,3 +39,6 @@ Run `npm install` at the root project directory (same directory level as `packag
         curl -X GET http://localhost:3000/api/posts \
         -H 'auth-token: somejwttoken'
         ```
+* `/app/chat`
+    * sample websocket application, to connect via websocket
+    * TODO: implement authentication

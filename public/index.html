@@ -4,9 +4,26 @@
         <meta charset="utf-8">
         <title>Chat with WS</title>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+        <link href="/app/chat/style.css" rel="stylesheet"/>
     </head>
     <body>
-        <h1>WS session start.</h1>
-        <script src="/api/chat/chat.js"></script>
+        <h1>Chat Session</h1>
+        <div class="chat-page">
+            <div>
+                <div class="chat-window">
+                    <div id="output"></div>
+                    <div id="feedback"></div>
+                </div>
+                <input id="user" type="text" placeholder="User"/>
+                <input id="message" type="text" placeholder="Message"/>
+                <button id="send">Send</button>
+            </div>
+            <div>
+                <div class="psi-window">
+                    <div id="psi"></div>
+                </div>
+            </div>
+        </div>
+        <script src="/app/chat/chat.js"></script>
     </body>
 </html>
