@@ -3,6 +3,7 @@ const util = require('util')
 const dotenv = require('dotenv');
 const express = require('express');
 const mongoose = require('mongoose');
+const ws = require('socket.io');
 
 // App modules
 const authRoute = require('./routes/auth');
@@ -27,12 +28,18 @@ mongoose.connect(
     }
 );
 
-// Middleware
+// Middleware Parsers
 app.use(express.json());
 
-// Routing
+// Routing Middleware
 app.use('/api/user', authRoute);
 app.use('/api/posts', postRoute);
+app.use('/api/chat', express.static('public'));
 
 // Main
-app.listen(env.APP_PORT, () => console.log(util.format('Server running at %d', env.APP_PORT)));
+const server = app.listen(env.APP_PORT, () => console.log(util.format('Server running at %d', env.APP_PORT)));
+const websocket = ws(server);
+
+websocket.on('connection', (socket) => {
+    console.log(util.format('Websocket established with client: %s', socket.id));
+});
