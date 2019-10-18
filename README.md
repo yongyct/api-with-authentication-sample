@@ -19,13 +19,8 @@ Run `npm install` at the root project directory (same directory level as `packag
     * register a new user/email/password into the mongodb database
     * e.g. 
         ```(bash)
-        curl -X POST \
-  http://localhost:3000/api/user/register \
-  -d '{
-    "name": "somename"
-	"email": "someemail@somedomain.com",
-	"password": "somepassword"
-}'
+        curl -X POST http://localhost:3000/api/user/register \
+        -d '{"name": "somename", "email": "someemail@somedomain.com", "password": "somepassword"}'
         ```
 * `/api/user/login`
     * login with a registered email & password, a token will be generated and returned in the response headers (under `auth-token`)
